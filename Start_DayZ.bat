@@ -22,6 +22,7 @@ tasklist /FI "IMAGENAME eq DZSALModServer.exe" 2>NUL | find /I /N "DZSALModServe
 if "%ERRORLEVEL%"=="0" goto checkbec
 cls
 echo Server is not running, taking care of it..
+ping 127.0.0.1 -n 2>NUL
 goto killsv
 
 :checkbec
@@ -42,6 +43,7 @@ goto checksv
 :killsv
 taskkill /f /im Bec.exe
 taskkill /f /im DZSALModServer.exe
+ping 127.0.0.1 -n 2>NUL
 goto startsv
 
 :startsv
@@ -66,12 +68,15 @@ goto startbec
 cls
 echo Starting Bec.
 timeout 1 >nul
+ping 127.0.0.1 -n 2>NUL
 cls
 echo Starting Bec..
 timeout 1 >nul
+ping 127.0.0.1 -n 2>NUL
 cls
 echo Starting Bec...
 timeout 1 >nul
+ping 127.0.0.1 -n 2>NUL
 cd "%BEC_LOCATION%"
 start /min Bec.exe -f Config.cfg --dsc
 goto checksv
